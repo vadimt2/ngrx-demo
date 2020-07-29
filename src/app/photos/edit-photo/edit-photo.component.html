@@ -1,0 +1,55 @@
+<div class="card">
+    <h4 class="card-header">Add product</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput [formControl]="f.title" [errorStateMatcher]="matcher"
+                       placeholder="Title">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="f.title.hasError('title') && !f.title.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="f.title.hasError('required')">
+                  Title is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Url</mat-label>
+                <input matInput [formControl]="f.url" [errorStateMatcher]="matcher"
+                       placeholder="Image url start with https://">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="f.url.hasError('url') && !f.url.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="f.url.hasError('required')">
+                  Url is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>ThumbnailUrl</mat-label>
+                <input matInput [formControl]="f.thumbnailUrl" [errorStateMatcher]="matcher"
+                       placeholder="Image ThumbnailUrl start with https://">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="f.thumbnailUrl.hasError('thumbnailUrl') && !f.thumbnailUrl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="f.thumbnailUrl.hasError('required')">
+                  thumbnailUrl is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" mat-flat-button color="primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+  </div>

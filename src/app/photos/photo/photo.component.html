@@ -1,0 +1,10 @@
+
+<mat-card>
+    <!-- <mat-card-title>{{photo.title}}</mat-card-title> -->
+    <img mat-card-lg-image [src]="photo.thumbnailUrl" (click)="openDialog()" />
+    <mat-card-content>
+        <div>
+            <button mat-button (click)="removePhoto(photo)">Delete</button>
+        </div>
+</mat-card-content>
+</mat-card>
