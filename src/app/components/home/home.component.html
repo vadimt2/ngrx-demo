@@ -1,27 +1,28 @@
 <main>
+  <section >
   <div class="container mt-5">
     <div class="row">
       <div class="col-sm-6">
-        <section >
-          <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
-          <ul class="list" *ngIf="!(isLoading$ | async)">
-            <cdk-virtual-scroll-viewport [itemSize]="5000" style="height: 400px; width: 400px;" >
-              <li> <app-photos [photos]="photos$ | async"></app-photos> </li>
-            </cdk-virtual-scroll-viewport>
-          </ul>
-        </section>
+          <cdk-virtual-scroll-viewport style="height: 400px; width: 400px;" itemSize="50">
+            <div *cdkVirtualFor="let photo of photos$ | async;">
+              <div><app-photo [photo]="photo"></app-photo></div>
+            </div>
+          </cdk-virtual-scroll-viewport>
+          
+
+
       </div>
       <div class="col-sm-6">
-        <section>
           <app-add-photo></app-add-photo>
-        </section>
       </div>
     </div>
-
-    <div class="col-sm-6">
-      <section>
-        <app-edit-photo *ngIf="editPhoto"></app-edit-photo>
-      </section>
+    <div class="row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-6">
+          <app-edit-photo *ngIf="photoToUpdate" [photo]="photoToUpdate"></app-edit-photo>
+      </div>
     </div>
-  </div>
+    </div>
+  </section>
 </main>

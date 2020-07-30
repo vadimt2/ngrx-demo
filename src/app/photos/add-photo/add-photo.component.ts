@@ -3,8 +3,8 @@ import { FormGroup, Validators, FormControl, FormBuilder, FormGroupDirective, Ng
 import { MyErrorStateMatcher } from '../../models/my-error-state-matcher';
 import { Store } from '@ngrx/store';
 import { IPhoto } from 'src/app/interfaces';
-import { AddPhoto } from 'src/app/root-store/photos-feature-store/actions';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PhotoService } from '../../services';
 
 
 @Component({
@@ -14,12 +14,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddPhotoComponent implements OnInit {
 
-
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<{ photos: IPhoto[] }>,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private photoService:PhotoService) { }
 
   public form: FormGroup;
   public submitted = false;
@@ -33,7 +32,7 @@ export class AddPhotoComponent implements OnInit {
       title: new FormControl('',Validators.required),
       url: ['',[
         Validators.required,
-        Validators.pattern("(https?:\/\/.*\.(?:jpg|jpeg|png|gif))")]],
+        ]],
       thumbnailUrl: ['', Validators.required]
   });
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -49,8 +48,7 @@ export class AddPhotoComponent implements OnInit {
     } ;
 
     console.log(photo)
-    this.router.navigate
-    this.store.dispatch(new AddPhoto(photo));
+    this.photoService.addPhoto(photo);
 
     if(this.form.valid)
     this.form.reset();

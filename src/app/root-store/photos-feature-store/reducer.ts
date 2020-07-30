@@ -7,17 +7,29 @@ import { featureAdapter, initialState, State } from './state';
 
 export function photoReducer(state = initialState, action: Actions) {
   switch (action.type) {
-    case ActionTypes.ADD:
+    case ActionTypes.ADD_PHOTO:
       return {
         ...state,
         photos: [...state.photos, action.payload]
       };
-
-    case ActionTypes.REMOVE:
+      case ActionTypes.UPDATE_PHOTO:     
+      return {
+        ...state,
+        photos: [...state.photos.map(photo => ({...photo})).map(photo => {
+          if(photo.id === action.payload.id){
+            photo = action.payload;
+            return photo;
+          }
+          else
+          return photo;
+        })]
+      }
+    case ActionTypes.REMOVE_PHOTO:
       return {
         ...state,
         photos: [...state.photos.filter(photo => photo.id !== action.payload.id)]
-      };case ActionTypes.LOAD_REQUEST: {
+      };
+      case ActionTypes.LOAD_REQUEST: {
         return {
           ...state,
           isLoading: true,

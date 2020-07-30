@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    ScrollingModule
  
   ],
   exports: [PhotoComponent, PhotosComponent, AddPhotoComponent, EditPhotoComponent], 

@@ -13,12 +13,15 @@ import {PhotoService} from '../../services/'
 })
 export class PhotoComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private store: Store<{ photos: IPhoto[] }>) { }
+  constructor(
+    public dialog: MatDialog, 
+    private store: Store<{ photos: IPhoto[] }>, 
+    private photoService:PhotoService) { }
 
   @Input() photo: IPhoto;
 
   ngOnInit(): void {
-    
+    // console.log(this.photo)
   }
 
   openDialog():void {
@@ -32,11 +35,11 @@ export class PhotoComponent implements OnInit {
   }
 
   removePhoto(photo: IPhoto) {
-    this.store.dispatch(new RemovePhoto(photo));
+    this.photoService.deletePhoto(photo);
   }
 
-  // editPhoto(photo: IPhoto){
-  //   console.log(photo)
-  // }
+  editPhoto(photo: IPhoto){
+    this.photoService.updatePhotoEmitter.emit(photo);
+  }
 
 }

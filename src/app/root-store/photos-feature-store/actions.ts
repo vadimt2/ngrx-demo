@@ -2,8 +2,9 @@ import { Action } from '@ngrx/store';
 import { IPhoto } from '../../interfaces/iphoto'
 
 export enum ActionTypes {
-  ADD = '[Photo] Add to photos',
-  REMOVE = '[Photo] Remove from photos',
+  ADD_PHOTO = '[Photo] Add to photos',
+  REMOVE_PHOTO = '[Photo] Remove from photos',
+  UPDATE_PHOTO = '[Photo] Update from photos',
   LOAD_PHOTOS = '[Photo] Load Photos from server',
   LOAD_REQUEST = '[Photo] Load Request',
   LOAD_FAILURE = '[Photo] Load Failure',
@@ -12,7 +13,7 @@ export enum ActionTypes {
 
 
 export class AddPhoto implements Action {
-  readonly type = ActionTypes.ADD;
+  readonly type = ActionTypes.ADD_PHOTO;
 
   constructor(public payload: IPhoto) {}
 }
@@ -22,11 +23,16 @@ export class GetPhotos implements Action {
 }
 
 export class RemovePhoto implements Action {
-  readonly type = ActionTypes.REMOVE;
+  readonly type = ActionTypes.REMOVE_PHOTO;
 
   constructor(public payload: IPhoto) {}
 }
 
+export class UpdatePhoto implements Action {
+  readonly type = ActionTypes.UPDATE_PHOTO;
+
+  constructor(public payload: IPhoto) {}
+}
 export class LoadRequestAction implements Action {
   readonly type = ActionTypes.LOAD_REQUEST;
 }
@@ -41,5 +47,5 @@ export class LoadSuccessAction implements Action {
   constructor(public payload: IPhoto[] ) {}
 }
 
-export type Actions = AddPhoto | RemovePhoto | GetPhotos
-| LoadRequestAction | LoadFailureAction | LoadSuccessAction;
+export type Actions = AddPhoto | RemovePhoto | GetPhotos | UpdatePhoto
+ | LoadFailureAction | LoadSuccessAction | LoadRequestAction;

@@ -50,7 +50,7 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatInputModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [PhotoService],
   bootstrap: [AppComponent]
