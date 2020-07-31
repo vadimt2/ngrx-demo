@@ -1,6 +1,6 @@
 import { Photo } from './photo';
 
-describe('Product', () => {
+describe('Photo', () => {
   it('should create an instance', () => {
     expect(new Photo()).toBeTruthy();
   });

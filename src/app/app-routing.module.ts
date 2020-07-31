@@ -7,7 +7,6 @@ import { AddPhotoComponent } from './photos/add-photo/add-photo.component';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path:'', component: HomeComponent },
-  { path: 'add-photo', component : AddPhotoComponent }
 ];
 
 @NgModule({
