@@ -60,7 +60,6 @@ export class EditPhotoComponent implements OnInit {
       thumbnailUrl: this.f.thumbnailUrl.value
     } ;
 
-
     if(this.form.valid){
       this.photoService.updatePhoto(photo);
     }
