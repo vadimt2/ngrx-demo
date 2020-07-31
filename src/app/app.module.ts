@@ -14,11 +14,8 @@ import { PhotoService } from './services/index';
 import { HomeComponent } from './components/index';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HeaderComponent } from './components/header/header.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -30,27 +27,12 @@ import { MatInputModule } from '@angular/material/input';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     ScrollingModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
     RootStoreModule,
     PhotosModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatProgressSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatInputModule,
   ],
   providers: [PhotoService],
   bootstrap: [AppComponent]
